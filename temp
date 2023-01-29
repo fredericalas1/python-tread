@@ -1,0 +1,36 @@
+def formatData(df):
+    print('formatData')
+    for index, row in df.iterrows():
+        print(row['id'])
+        response = requests.get('https://jsonplaceholder.typicode.com/comments')
+        # print(response.status_code)
+        jsonData = response.json()
+        # print(jsonData[0]['name'])
+
+
+
+
+
+print("Main    : before creating thread")
+x = threading.Thread(target=formatData, args=(df, 0, 70))
+print("Main    : before running thread")
+x.start()
+print("Main    : wait for the thread to finish")
+# x.join()
+
+print("Main    : before creating thread")
+y = threading.Thread(target=formatData, args=(df, 71, 160))
+print("Main    : before running thread")
+y.start()
+print("Main    : wait for the thread to finish")
+# x.join()
+
+
+print("Main    : before creating thread")
+z = threading.Thread(target=formatData, args=(df, 161, 223))
+print("Main    : before running thread")
+z.start()
+print("Main    : wait for the thread to finish")
+# x.join()
+
+print("Main    : all done")
